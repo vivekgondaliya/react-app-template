@@ -6,15 +6,17 @@ import ContentContainer from "./components/ContentContainer";
 import About from './components/About';
 import NotFound from './components/NotFound';
 import LoginForm from './components/Login';
+import SideNavigation from './components/SideNavigation';
 
 class App extends Component {
     render() {
         return (
             <div>
-                <TopNavigation />
+                {/* <TopNavigation />
+                <SideNavigation /> */}
                 <Switch>
-                    <Route exact path="/" component={LoginForm} />
-                    <PrivateRoute path="/home">
+                    <Route exact path="/login" component={LoginForm} />
+                    <PrivateRoute path="/">
                         <ContentContainer />
                     </PrivateRoute>
                     <PrivateRoute path="/about">
