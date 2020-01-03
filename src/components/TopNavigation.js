@@ -4,23 +4,28 @@ import {
   Dropdown,
   Image,
   Menu,
+  Icon,
+  Button
 } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom';
 
-const TopNavigation = () => {
+const TopNavigation = (props) => {
   return (
-    <Menu fixed='top' inverted>
+    <Menu fixed='top'>
       <Container>
         <Menu.Item as='a' header>
           <Image size='mini' src='https://cdn3.iconfinder.com/data/icons/bebreezee-weather-symbols/559/icon-weather-sunny-512.png' style={{ marginRight: '1.5em' }} />
-          Sunny Days
+          Project Title
         </Menu.Item>
-        <Menu.Item><Link to="/home">Home</Link></Menu.Item>
-        <Menu.Item><Link to="/weather">Weather Types</Link></Menu.Item>
-        <Menu.Item><Link to="/about">About Us</Link></Menu.Item>
+        <Menu.Item as={ Link } name="home" to="home"><Icon name="home"/>Home</Menu.Item>
+        <Menu.Item as={ Link } name="about" to="about">About Us</Menu.Item>
         <Menu.Menu position='right'>
-          <Dropdown item simple text='Dropdown'>
+          <Dropdown
+            text='Hello, John Doe'
+            item
+            simple
+          >
             <Dropdown.Menu>
               <Dropdown.Item>List Item</Dropdown.Item>
               <Dropdown.Item>List Item</Dropdown.Item>
@@ -34,7 +39,7 @@ const TopNavigation = () => {
                   <Dropdown.Item>List Item</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
+              <Dropdown.Item as={ Link } name="logout" to="/"><Icon name="log out"/>LOGOUT</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Menu.Menu>
