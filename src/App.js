@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from 'react-router-dom';
 
 import LoginForm from './components/Login';
-import MainProject from "./components/MainProject";
+import Layout from "./components/Layout";
 
 class App extends Component {
     render() {
@@ -10,7 +10,7 @@ class App extends Component {
           <div>
               <Switch>
                   <Route path="/login" component={LoginForm} />
-                  <Route path="/" component={MainProject} />
+                  <Route path="/" component={Layout} />
               </Switch>
           </div>
       )
