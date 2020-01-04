@@ -1,15 +1,20 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { Header } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
 
 import TopNavigation from './TopNavigation';
-import NotFound from './NotFound';
+import Layout from './Layout';
 
-function MainProject(){
+import isLoggedIn from '../helpers/is_logged_in';
+
+function MainProject(props){
+    if (!isLoggedIn()) {
+        return <Redirect to="/login" />;
+    }
     return (
         <div>
-            <TopNavigation />
-            <Route component={NotFound} />
+            {/* below components will load on all pages */}
+            <TopNavigation {...props}/>
+            <Layout />
         </div>
     )
 }

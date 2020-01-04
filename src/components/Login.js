@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
+import store from 'store';
 
 class LoginForm extends Component{
   constructor(props) {
@@ -24,7 +25,8 @@ class LoginForm extends Component{
     }
 
     console.log("you're logged in. yay!");
-    //store.set('loggedIn', true);
+    store.set('loggedIn', true);
+    this.props.history.push('/home');
   }
 
   handleChange = (e, { name, value }) => {

@@ -1,19 +1,21 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import LoginForm from './components/Login';
 import MainProject from "./components/MainProject";
+import NotFound from './components/NotFound';
 
 class App extends Component {
     render() {
-        return (
-            <div>
-                <Switch>
-                    <Route path="/login" component={LoginForm} />
-                    <Route path="/" component={MainProject} />
-                </Switch>
-            </div>
-        )
+      return (
+          <div>
+              <Switch>
+                  <Route path="/login" component={LoginForm} />
+                  <Route path="/" component={MainProject} />
+                  <Route component={NotFound} />
+              </Switch>
+          </div>
+      )
     }
 }
 
