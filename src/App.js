@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 
 import LoginForm from './components/Login';
 import MainProject from "./components/MainProject";
-import NotFound from './components/NotFound';
 
 class App extends Component {
     render() {
@@ -12,7 +11,6 @@ class App extends Component {
               <Switch>
                   <Route path="/login" component={LoginForm} />
                   <Route path="/" component={MainProject} />
-                  <Route component={NotFound} />
               </Switch>
           </div>
       )

@@ -1,12 +1,14 @@
 import React from 'react'
-import {Header} from 'semantic-ui-react'
+import { Route, Switch } from 'react-router-dom';
 
-
+import SideNavigation from './SideNavigation';
+import NotFound from './NotFound';
 const Layout = () => {
     return (
-        <div>
-            <Header as='h1'>Layout Container</Header>
-        </div>
+        <Switch>
+            <Route path='/' exact component={SideNavigation} />
+            <Route component={NotFound} />
+        </Switch>
     )
 }
 

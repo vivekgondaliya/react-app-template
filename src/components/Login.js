@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import store from 'store';
+
+import isLoggedIn from '../helpers/is_logged_in';
 
 class LoginForm extends Component{
   constructor(props) {
@@ -35,6 +38,9 @@ class LoginForm extends Component{
 
   render(){
     const { error } = this.state;
+    if (isLoggedIn()) {
+      return <Redirect to="/" />;
+    }
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
