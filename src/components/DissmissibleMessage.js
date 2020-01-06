@@ -25,5 +25,10 @@ class DissmissibleMessage extends Component {
         return null;
     }
   }
+
+DissmissibleMessage.defaultProps = {
+    header: "default - No header",
+    content: "default - No Content"
+}
   
-  export default DissmissibleMessage;
+export default DissmissibleMessage;
