@@ -1,31 +1,19 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import TopNavigation from './components/TopNavigation';
-import ContentContainer from "./components/ContentContainer";
-import About from './components/About';
-import NotFound from './components/NotFound';
 import LoginForm from './components/Login';
-import SideNavigation from './components/SideNavigation';
+import Layout from "./components/Layout";
 
 class App extends Component {
     render() {
-        return (
-            <div>
-                {/* <TopNavigation />
-                <SideNavigation /> */}
-                <Switch>
-                    <Route exact path="/login" component={LoginForm} />
-                    <PrivateRoute path="/">
-                        <ContentContainer />
-                    </PrivateRoute>
-                    <PrivateRoute path="/about">
-                        <About />
-                    </PrivateRoute>
-                    <Route component={NotFound} />
-                </Switch>
-            </div>
-        )
+      return (
+          <div>
+              <Switch>
+                  <Route path="/login" component={LoginForm} />
+                  <Route path="/" component={Layout} />
+              </Switch>
+          </div>
+      )
     }
 }
 

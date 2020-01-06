@@ -1,13 +1,19 @@
 import React from 'react'
-import {Container, Header, Segment, List, Divider, Grid, Image} from 'semantic-ui-react'
+import { Route, Switch } from 'react-router-dom';
+
+import NotFound from './NotFound';
+import AnotherSection from './AnotherSection';
+import Section from './Section';
+import Home from './Home';
 
 const ContentContainer = () => {
     return (
-        <div>
-            <Container text style={{ marginTop: '7em' }}>
-                <Header as='h1'>Silver Spring, MD</Header>
-            </Container>
-        </div>
+        <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/section' component={Section} />
+            <Route path='/another-section' component={AnotherSection} />
+            <Route component={NotFound} />
+        </Switch>
     )
 }
 

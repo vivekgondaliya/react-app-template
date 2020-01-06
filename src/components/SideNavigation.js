@@ -1,43 +1,32 @@
 import React, { Component } from 'react'
-import { Grid, Menu, Link, Icon} from 'semantic-ui-react'
-import { withRouter } from 'react-router-dom'
+import { Menu } from 'semantic-ui-react'
 
+export default class SideNavigation extends Component {
+  state = { activeItem: 'home' }
 
-class SideNavigation extends Component {
-    state = { activeItem: 'home' }
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-    handleItemClick = (e, { name }) => {
-        this.setState({ activeItem: name });
-        this.props.history.push(`/${name}`);
-    }
+  render() {
+    const { activeItem } = this.state
 
-    render() {
-        const { activeItem } = this.state
-
-        return (
-        <Grid>
-            <Grid.Column width={6}>
-            <Menu pointing secondary vertical>
-                <Menu.Item
-                name='home'
-                active={activeItem === 'home'}
-                onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                name='about'
-                active={activeItem === 'about'}
-                onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                name='section'
-                active={activeItem === 'section'}
-                onClick={this.handleItemClick}
-                />
-            </Menu>
-            </Grid.Column>
-        </Grid>
-        )
-    }
+    return (
+      <Menu pointing secondary vertical>
+        <Menu.Item
+          name='home'
+          active={activeItem === 'home'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='messages'
+          active={activeItem === 'messages'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='friends'
+          active={activeItem === 'friends'}
+          onClick={this.handleItemClick}
+        />
+      </Menu>
+    )
+  }
 }
-
-export default withRouter(SideNavigation);
