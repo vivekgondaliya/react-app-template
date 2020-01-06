@@ -1,32 +1,48 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Message } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom';
+import DissmissibleMessage from './DissmissibleMessage';
 
-export default class SideNavigation extends Component {
+
+class SideNavigation extends Component {
   state = { activeItem: 'home' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name });
+    this.props.history.push(`/${name}`);
+  }
 
   render() {
     const { activeItem } = this.state
 
     return (
-      <Menu pointing secondary vertical>
+      <Menu pointing secondary vertical style={{ 'display': 'inline-block','minHeight': '100vh', 'minWidth': '100%'}}>
         <Menu.Item
+          icon='home'
           name='home'
           active={activeItem === 'home'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name='messages'
-          active={activeItem === 'messages'}
+          icon= 'file alternate'
+          name='section'
+          active={activeItem === 'section'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name='friends'
-          active={activeItem === 'friends'}
+          icon= 'file alternate outline'
+          name='another-section'
+          active={activeItem === 'another-section'}
           onClick={this.handleItemClick}
+        />
+        <DissmissibleMessage 
+          header='TODO'
+          content='Responsiveness Pending'
+          color='blue'
         />
       </Menu>
     )
   }
 }
+
+export default withRouter(SideNavigation)

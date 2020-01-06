@@ -15,13 +15,13 @@ function Layout(props){
     return (
         <div>
             {/* below components will load on all pages */}
-            <TopNavigation {...props}/>
+            <TopNavigation />
             <Grid>
-                <Grid.Column width={4}>
+                <Grid.Column width={3}>
                     <SideNavigation />
                 </Grid.Column>
 
-                <Grid.Column width={12}>
+                <Grid.Column width={13}>
                     <ContentContainer />
                 </Grid.Column>
             </Grid>

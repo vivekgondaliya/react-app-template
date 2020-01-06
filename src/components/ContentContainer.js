@@ -8,12 +8,14 @@ import Home from './Home';
 
 const ContentContainer = () => {
     return (
-        <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/section' component={Section} />
-            <Route path='/another-section' component={AnotherSection} />
-            <Route component={NotFound} />
-        </Switch>
+        <div>
+            <Switch>
+                <Route path='/home' component={Home} />
+                <Route path='/section' component={Section} />
+                <Route path='/another-section' component={AnotherSection} />
+                <Route component={NotFound} />
+            </Switch>
+        </div>
     )
 }
 
