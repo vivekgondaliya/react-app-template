@@ -9,6 +9,10 @@ class TopNavigation extends Component {
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
+    if(name === 'home'){
+      this.props.history.push('/');
+      return;
+    }
     this.props.history.push(`/${name}`);
   }
   

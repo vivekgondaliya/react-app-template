@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import store from 'store';
 
-import isLoggedIn from '../helpers/is_logged_in';
+import isLoggedIn from '../../helpers/is_logged_in';
 
 class LoginForm extends Component{
   constructor(props) {

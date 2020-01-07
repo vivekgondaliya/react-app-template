@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Menu, Message } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
-import DissmissibleMessage from './DissmissibleMessage';
+import DissmissibleMessage from '../misc/DissmissibleMessage';
 
 
 class SideNavigation extends Component {
@@ -9,6 +9,10 @@ class SideNavigation extends Component {
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
+    if(name === 'home'){
+      this.props.history.push('/');
+      return;
+    }
     this.props.history.push(`/${name}`);
   }
 

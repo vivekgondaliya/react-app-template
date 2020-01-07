@@ -2,8 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
 
-import TopNavigation from './TopNavigation';
-import SideNavigation from './SideNavigation';
+import TopNavigation from './navigation/TopNavigation';
+import SideNavigation from './navigation/SideNavigation';
 import ContentContainer from './ContentContainer';
 
 import isLoggedIn from '../helpers/is_logged_in';
