@@ -114,14 +114,28 @@ class Home extends React.Component {
 	  this.setState({ isDismissSuccessMessage : false });
   }
 
+  handleAddRow = () => {
+    let tableData = this.state.tableData;
+
+    const newRow = {
+      id: tableData.length+1,
+      name: "",
+      username: "",
+      email: "",
+      phone: ""
+    }
+    tableData.push(newRow);
+    this.setState({ tableData });
+  }
+
 
   render() {
-    const editButton = this.state.isEdit ? <Button content='Done' primary onClick={this.handleButtonClick}/> : 
+    const editButton = this.state.isEdit ? <div><Button content='Add Row' onClick={this.handleAddRow} /><Button content='Done' primary onClick={this.handleButtonClick}/></div> : 
     <Button content='Edit' onClick={this.handleButtonClick}/>;
 
     const submitButton = this.state.isEdit ? null: <Button content='Submit' positive onClick={this.handleSubmit}/>;
 
-	const messageContent = this.state.isDataLoading ? "We are submitting your data." : "Data submitted successfully (check console log for submitted data)";
+	  const messageContent = this.state.isDataLoading ? "We are submitting your data." : "Data submitted successfully (check console log for submitted data)";
     const submitStatusMessage = <DataLoadingMessage isDataLoading={this.state.isDataLoading} isDismissSuccessMessage={this.state.isDismissSuccessMessage} content={messageContent} updateDismissSuccessMessage={this.updateDismissSuccessMessage}/>;
 
     const table = this.state.isEdit ? <EditTable data={this.state.tableData} handleChange={this.handleChange} /> : <SampleTable data={this.state.tableData} />
