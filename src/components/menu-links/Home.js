@@ -2,6 +2,7 @@ import React from 'react'
 import {Header, Button} from 'semantic-ui-react'
 import SampleTable from '../table/Table';
 import EditTable from '../table/EditTable';
+import DataLoadingMessage from '../misc/DataLoadingMessage';
 
 class Home extends React.Component {
   state = {
@@ -76,7 +77,9 @@ class Home extends React.Component {
         }
       }
     ],
-    isEdit: false
+    isEdit: false,
+	isDataLoading: false,
+	isDismissSuccessMessage: false
   }
 
   handleButtonClick = () => {
@@ -98,19 +101,48 @@ class Home extends React.Component {
     });
   }
 
+  handleSubmit = () => {
+    this.setState({ isDataLoading : true });
+    console.log('data being submitted...', this.state.tableData);
+
+    setTimeout(() => {
+      this.setState({ isDataLoading : false, isDismissSuccessMessage : true});
+    }, 2000);
+  }
+
+  updateDismissSuccessMessage = () => {
+	  this.setState({ isDismissSuccessMessage : false });
+  }
+
+
   render() {
     const editButton = this.state.isEdit ? <Button content='Done' primary onClick={this.handleButtonClick}/> : 
     <Button content='Edit' onClick={this.handleButtonClick}/>;
 
+    const submitButton = this.state.isEdit ? null: <Button content='Submit' positive onClick={this.handleSubmit}/>;
+
+	const messageContent = this.state.isDataLoading ? "We are fetching/submitting that content for you." : "Data submitted successfully (check console log for submitted data)";
+    const submitStatusMessage = <DataLoadingMessage isDataLoading={this.state.isDataLoading} isDismissSuccessMessage={this.state.isDismissSuccessMessage} content={messageContent} updateDismissSuccessMessage={this.updateDismissSuccessMessage}/>;
+
     const table = this.state.isEdit ? <EditTable data={this.state.tableData} handleChange={this.handleChange} /> : <SampleTable data={this.state.tableData} />
+    
     return  (
-      <div>
-        <Header as='h1' color='green'>
-          Home
-        </Header>
-        {table}
-        {editButton}
-      </div>
+		<div>
+			<Header as='h1' color='green'>
+				Home
+			</Header>
+			
+			{table}
+
+			<div>
+				{editButton}
+				{submitButton}
+			</div>
+			
+			<div style={{marginTop: '10px'}}>
+				{submitStatusMessage}
+			</div>
+		</div>
     )
   }
 }
