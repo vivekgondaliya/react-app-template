@@ -102,6 +102,12 @@ class MainTable extends React.Component {
     this.setState({ tableData });
   }
 
+  handleDeleteRow = (data) => {
+    var tableData = this.state.tableData;
+    const newTableData = tableData.filter((row) => row.id !== data.id);
+    this.setState({ tableData : newTableData });
+  }
+
   handleDoneEdit = () => {
       //TODO: if newRow data is empty then DO NOT add row
       this.setState(prevState => ({
@@ -145,7 +151,7 @@ class MainTable extends React.Component {
 	const messageContent = this.state.isDataLoading ? "We are submitting your data." : "Data submitted successfully (check console log for submitted data)";
     const submitStatusMessage = <DataLoadingMessage isDataLoading={this.state.isDataLoading} isDismissSuccessMessage={this.state.isDismissSuccessMessage} content={messageContent} updateDismissSuccessMessage={this.updateDismissSuccessMessage}/>;
 
-    const table = this.state.isEdit ? <EditTable data={this.state.tableData} handleDataChange={this.handleDataChange} /> : <SampleTable data={this.state.tableData} />
+    const table = this.state.isEdit ? <EditTable data={this.state.tableData} handleDataChange={this.handleDataChange} handleDeleteRow={this.handleDeleteRow}/> : <SampleTable data={this.state.tableData} />
     
     return  (
 		<div>

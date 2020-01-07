@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Input } from "semantic-ui-react";
+import { Table, Input, Button, Icon } from "semantic-ui-react";
 
 class EditTable extends Component {
   render() {
@@ -12,6 +12,7 @@ class EditTable extends Component {
             <Table.HeaderCell>Username</Table.HeaderCell>
             <Table.HeaderCell>E-mail address</Table.HeaderCell>
             <Table.HeaderCell>Phones</Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -30,6 +31,11 @@ class EditTable extends Component {
                 </Table.Cell>
                 <Table.Cell>
                     <Input value={data.phone} onChange={(e) => this.props.handleDataChange(data, 'phone', e)}/>
+                </Table.Cell>
+                <Table.Cell>
+                <Button icon onClick={() => this.props.handleDeleteRow(data)}>
+                  <Icon name='trash' color='red'/>
+                </Button>
                 </Table.Cell>
               </Table.Row>
             );
