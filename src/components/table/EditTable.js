@@ -20,16 +20,16 @@ class EditTable extends Component {
             return (
               <Table.Row key={data.id}>
                 <Table.Cell>
-                    <Input value={data.name} onChange={(e) => this.props.handleChange(data, 'name', e)}/>
+                    <Input value={data.name} onChange={(e) => this.props.handleDataChange(data, 'name', e)}/>
                 </Table.Cell>
                 <Table.Cell>
-                    <Input value={data.username} onChange={(e) => this.props.handleChange(data, 'username', e)}/>
+                    <Input value={data.username} onChange={(e) => this.props.handleDataChange(data, 'username', e)}/>
                 </Table.Cell>
                 <Table.Cell>
-                    <Input value={data.email} onChange={(e) => this.props.handleChange(data, 'email', e)}/>
+                    <Input value={data.email} onChange={(e) => this.props.handleDataChange(data, 'email', e)}/>
                 </Table.Cell>
                 <Table.Cell>
-                    <Input value={data.phone} onChange={(e) => this.props.handleChange(data, 'phone', e)}/>
+                    <Input value={data.phone} onChange={(e) => this.props.handleDataChange(data, 'phone', e)}/>
                 </Table.Cell>
               </Table.Row>
             );
