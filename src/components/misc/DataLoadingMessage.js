@@ -8,7 +8,7 @@ const DataLoadingMessage = (props) => {
                 <Icon name='circle notched' loading />
                 <Message.Content>
                 <Message.Header>Just one second</Message.Header>
-                    {props.content}
+                    {props.content || 'default - fetching/submitting content'}
                 </Message.Content>
             </Message>
         )
@@ -21,7 +21,7 @@ const DataLoadingMessage = (props) => {
                 success
                 onDismiss={props.updateDismissSuccessMessage}
                 header='Success'
-                content={props.content}
+                content={props.content || 'default - content fetched/submitted successfullly'}
             />
         )
     }

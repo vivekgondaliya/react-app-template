@@ -103,7 +103,7 @@ class Home extends React.Component {
 
   handleSubmit = () => {
     this.setState({ isDataLoading : true });
-    console.log('data being submitted...', this.state.tableData);
+    console.log('<<<< SUBMITTED DATA >>>>', this.state.tableData);
 
     setTimeout(() => {
       this.setState({ isDataLoading : false, isDismissSuccessMessage : true});
@@ -121,7 +121,7 @@ class Home extends React.Component {
 
     const submitButton = this.state.isEdit ? null: <Button content='Submit' positive onClick={this.handleSubmit}/>;
 
-	const messageContent = this.state.isDataLoading ? "We are fetching/submitting that content for you." : "Data submitted successfully (check console log for submitted data)";
+	const messageContent = this.state.isDataLoading ? "We are submitting your data." : "Data submitted successfully (check console log for submitted data)";
     const submitStatusMessage = <DataLoadingMessage isDataLoading={this.state.isDataLoading} isDismissSuccessMessage={this.state.isDismissSuccessMessage} content={messageContent} updateDismissSuccessMessage={this.updateDismissSuccessMessage}/>;
 
     const table = this.state.isEdit ? <EditTable data={this.state.tableData} handleChange={this.handleChange} /> : <SampleTable data={this.state.tableData} />
