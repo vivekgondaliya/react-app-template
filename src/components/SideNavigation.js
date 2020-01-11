@@ -8,7 +8,7 @@ export default class SideNavigation extends Component {
 
   render() {
     const { activeItem } = this.state
-
+    //TODO: enable links to routes and move components to folders for better project view - static vs routes
     return (
       <Menu pointing secondary vertical>
         <Menu.Item
