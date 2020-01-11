@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from 'react-router-dom';
 
-import LoginForm from './components/Login';
+import LoginForm from './components/login/Login';
 import Layout from "./components/Layout";
 
 class App extends Component {
