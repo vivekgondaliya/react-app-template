@@ -37,8 +37,8 @@ class TopNavigation extends Component {
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name='section'
-          active={activeItem === 'section'}
+          name='form-component'
+          active={activeItem === 'form-component'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
