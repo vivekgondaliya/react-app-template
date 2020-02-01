@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 
 class LoginForm extends Component{
-    state = {}
-    
-    //minimize the use of ref - use scarcely
-    email = React.createRef();
-    password = React.createRef();
+    state = {
+        account: {
+            email: '',
+            password: ''
+        }
+    }
 
-    // componentDidMount(){
-    //     this.email.current.focus();
-    // }
-
-    //get form values
     handleSubmit = e => {
         e.preventDefault();
 
@@ -19,7 +15,14 @@ class LoginForm extends Component{
         console.log("Form Submitted");
     }
 
+    handleChange = ({ currentTarget : input }) => {
+        const account = {...this.state.account};
+        account[input.name] = input.value;
+        this.setState({ account });
+    }
+
     render(){
+        const { account } = this.state;
         return (
             <div>
                 <h1>Login</h1>
@@ -34,12 +37,23 @@ class LoginForm extends Component{
                             aria-describedby="emailHelp" 
                             placeholder="Enter email" 
                             autoFocus
+                            value={account.email}
+                            onChange={this.handleChange}
+                            name="email"
                             />
                         <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" id="password" placeholder="Password" />
+                        <input 
+                            type="password" 
+                            className="form-control" 
+                            id="password" 
+                            placeholder="Password" 
+                            value={account.password}
+                            onChange={this.handleChange}
+                            name="password"
+                        />
                     </div>
                     <div className="form-check">
                         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
