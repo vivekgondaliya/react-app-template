@@ -2,7 +2,16 @@ import React, { Component } from 'react'
 
 class LoginForm extends Component{
     state = {}
+    
+    //minimize the use of ref - use scarcely
+    email = React.createRef();
+    password = React.createRef();
 
+    // componentDidMount(){
+    //     this.email.current.focus();
+    // }
+
+    //get form values
     handleSubmit = e => {
         e.preventDefault();
 
@@ -17,7 +26,15 @@ class LoginForm extends Component{
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
+                        <input 
+                            ref={this.email} 
+                            type="email" 
+                            className="form-control" 
+                            id="email" 
+                            aria-describedby="emailHelp" 
+                            placeholder="Enter email" 
+                            autoFocus
+                            />
                         <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div className="form-group">
