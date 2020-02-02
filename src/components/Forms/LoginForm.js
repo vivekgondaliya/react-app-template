@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser';
-import Input from './Input';
 import Form from './Form';
 
-//GOAL: resusable form component
+//GOAL: helper rendering methods
 /**
  * Future Forms
  * 
@@ -32,31 +31,14 @@ class LoginForm extends Form{
     }
 
     render(){
-        const { data, errors } = this.state;
         return (
             <div>
                 <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <Input 
-                        name="email"
-                        label="Email" 
-                        value={data.email}
-                        error={errors.email}
-                        onChange={this.handleChange}
-                        placeholderText="Enter email"
-                    />
-                    <Input 
-                        name="password"
-                        label="Password" 
-                        value={data.password}
-                        error={errors.password}
-                        onChange={this.handleChange}
-                        placeholderText="Password"
-                    />
-                    <button
-                        disabled={this.validate()} 
-                        className="btn btn-primary">Login</button>
-                    </form>
+                    {this.renderInput("email" , "Email", "Enter email")}
+                    {this.renderInput("password" , "Password", "Password", "password")}
+                    {this.renderButton("Login")}
+                </form>
             </div>
         )
     }

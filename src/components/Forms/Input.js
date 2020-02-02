@@ -1,20 +1,16 @@
 import React from 'react'
 
-const Input = ({ name, label, placeholderText, value, error, onChange }) => {
+const Input = ({ name, label, placeholderText, error, ...rest }) => {
     return (
         <div className="form-group">
             <label htmlFor={name}>{label}</label>
             <input
-                type={name} 
-                className="form-control" 
-                id={name} 
-                aria-describedby="emailHelp" 
+                {...rest}
                 placeholder={placeholderText}
-                autoFocus
-                value={value}
-                onChange={onChange}
                 name={name}
-                />
+                id={name}
+                className="form-control"ß
+            />
             {/* <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small> */}
             {error && 
                 <div className="alert alert-danger">
