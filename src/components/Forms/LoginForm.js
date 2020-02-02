@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Input from './Input';
 
-//GOAL: display validation errors
+//GOAL: basic validation on change
 class LoginForm extends Component{
     state = {
         account: {
@@ -36,10 +36,28 @@ class LoginForm extends Component{
         console.log("Form Submitted", this.state.account);
     }
 
+    validateProperty = ({ name, value }) => {
+        if(name === "email"){
+            if(value.trim() === '') return 'Email is required.';
+            // ... other validations
+        }
+
+        if(name === "password"){
+            if(value.trim() === '') return 'Password is required.';
+            // ... other validations
+        }
+    }
+
     handleChange = ({ currentTarget : input }) => {
+        const errors = {...this.state.errors};
+        const errorMessage = this.validateProperty(input);
+        if(errorMessage) errors[input.name] = errorMessage;
+        else delete errors[input.name];
+
         const account = {...this.state.account};
         account[input.name] = input.value;
-        this.setState({ account });
+
+        this.setState({ account, errors });
     }
 
     render(){
