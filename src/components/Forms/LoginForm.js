@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Joi from 'joi-browser';
 import Input from './Input';
 
-//GOAL: installing joi and init setup
+//GOAL: validating a field using joi
 class LoginForm extends Component{
     state = {
         account: {
@@ -29,6 +29,14 @@ class LoginForm extends Component{
         return errors;
     }
 
+    validateProperty = ({ name, value }) => {
+        const obj = { [name] : value };
+        const schema = { [name] : this.schema[name]};
+        const { error } = Joi.validate(obj, schema);
+    
+        return error ? error.details[0].message : null; 
+    }
+
     handleSubmit = e => {
         e.preventDefault();
         
@@ -41,18 +49,6 @@ class LoginForm extends Component{
 
         //call server
         console.log("Form Submitted", this.state.account);
-    }
-
-    validateProperty = ({ name, value }) => {
-        if(name === "email"){
-            if(value.trim() === '') return 'Email is required.';
-            // ... other validations
-        }
-
-        if(name === "password"){
-            if(value.trim() === '') return 'Password is required.';
-            // ... other validations
-        }
     }
 
     handleChange = ({ currentTarget : input }) => {
