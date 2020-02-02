@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Input from './Input';
 
-//GOAL: basic validation
+//GOAL: display validation errors
 class LoginForm extends Component{
     state = {
         account: {
@@ -27,7 +27,7 @@ class LoginForm extends Component{
         
         //validate input fields
         const errors = this.validate();
-        this.setState({ errors });
+        this.setState({ errors : errors || {} });
 
         //return if errors
         if(errors) return;
@@ -43,7 +43,7 @@ class LoginForm extends Component{
     }
 
     render(){
-        const { account } = this.state;
+        const { account, errors } = this.state;
         return (
             <div>
                 <h1>Login</h1>
@@ -52,6 +52,7 @@ class LoginForm extends Component{
                         name="email"
                         label="Email" 
                         value={account.email}
+                        error={errors.email}
                         onChange={this.handleChange}
                         placeholderText="Enter email"
                     />
@@ -59,6 +60,7 @@ class LoginForm extends Component{
                         name="password"
                         label="Password" 
                         value={account.password}
+                        error={errors.password}
                         onChange={this.handleChange}
                         placeholderText="Password"
                     />
