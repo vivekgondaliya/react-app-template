@@ -15,14 +15,16 @@ class LoginForm extends Form{
     state = {
         data: {
             email: "",
-            password: ""
+            password: "",
+            gender:""
         },
         errors: {}
     }
 
     schema = {
         email: Joi.string().required().label('Email'),
-        password: Joi.string().required().label('Password')
+        password: Joi.string().required().label('Password'),
+        gender: Joi.string().required().label("Gender")
     }
 
     doSubmit = () => {
@@ -31,12 +33,14 @@ class LoginForm extends Form{
     }
 
     render(){
+        const gender = ["Male", "Female"]
         return (
             <div>
                 <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
                     {this.renderInput("email" , "Email", "Enter email")}
                     {this.renderInput("password" , "Password", "Password", "password")}
+                    {this.renderSelect("gender", "Gender", gender)}
                     {this.renderButton("Login")}
                 </form>
             </div>
